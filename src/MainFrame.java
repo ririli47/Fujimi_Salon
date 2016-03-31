@@ -8,6 +8,12 @@ import java.util.StringTokenizer;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import java.awt.Font;
+import java.awt.Insets;
+import javax.swing.SwingConstants;
+import javax.swing.JMenu;
 
 public class MainFrame extends JFrame {
 
@@ -22,6 +28,11 @@ public class MainFrame extends JFrame {
 	RegisterPanel RegisterPanel = new RegisterPanel(this, PanelNames[2]);
 	ResultPanel ResultPanel = new ResultPanel(this, PanelNames[3]);
 	SearchPanel SearchPanel = new SearchPanel(this, PanelNames[4]);
+	private final JMenuBar menuBar = new JMenuBar();
+	private final JMenu menu = new JMenu("新規登録");
+	private final JMenu menu_1 = new JMenu("検索");
+	private final JMenuItem menuItem = new JMenuItem("新規登録");
+	private final JMenuItem menuItem_1 = new JMenuItem("検索");
 	
 	/**
 	 * Launch the application.
@@ -31,6 +42,8 @@ public class MainFrame extends JFrame {
 			public void run() {
 				try {
 					MainFrame frame = new MainFrame();
+					//黄金比
+					frame.setSize(712, 440);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,30 +56,41 @@ public class MainFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public MainFrame() {
+		setTitle("富士見サロン会員管理システム");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 400, 400);
+		setBounds(100,100, 400, 400);
 		
 		
 		//各パネルをMainFrameに追加
-		TopPanel.setSize(400, 180);
-		this.add(TopPanel);
+		TopPanel.setSize(712, 440);
+		getContentPane().add(TopPanel);
 		TopPanel.setVisible(true);
         
-		this.add(PersonalPanel);
+		getContentPane().add(PersonalPanel);
         PersonalPanel.setVisible(false);
-        this.setBounds(100, 100, 400, 200);
+        this.setBounds(100, 100, 712, 440);
 
-        this.add(RegisterPanel);
+        getContentPane().add(RegisterPanel);
         RegisterPanel.setVisible(false);
         this.setBounds(100, 100, 400, 200);
 
-        this.add(ResultPanel);
+        getContentPane().add(ResultPanel);
         ResultPanel.setVisible(false);
         this.setBounds(100, 100, 400, 200);
 
-        this.add(SearchPanel);
+        getContentPane().add(SearchPanel);
         SearchPanel.setVisible(false);
         this.setBounds(100, 100, 400, 200);
+        
+        setJMenuBar(menuBar);
+        
+        menuBar.add(menu);
+        
+        menu.add(menuItem);
+        
+        menuBar.add(menu_1);
+        
+        menu_1.add(menuItem_1);
 
         try {
             //ファイルを読み込む
@@ -84,7 +108,7 @@ public class MainFrame extends JFrame {
                 while(token.hasMoreTokens())
                 {
                 	MemberInfo[i][j] = token.nextToken();
-            		System.out.println(MemberInfo[i][j]);          	
+            		//System.out.println(MemberInfo[i][j]);          	
                 	j++;
                 }
                 j = 0;
