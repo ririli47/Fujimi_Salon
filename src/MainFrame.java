@@ -1,5 +1,9 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.StringTokenizer;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -7,6 +11,10 @@ import javax.swing.border.EmptyBorder;
 
 public class MainFrame extends JFrame {
 
+	//ファイルから読み込んだ会員情報
+	//マジックナンバーとして会員を100人、データを16個として想定
+	String MemberInfo[][] = new String[100][16];
+	
 	//各パネルのインスタンスを生成
 	public String[] PanelNames = {"TopPanel", "PersonalPanel", "RegisterPanel", "ResultPanel", "SearchPanel"};
     TopPanel TopPanel = new TopPanel(this, PanelNames[0]);
@@ -36,7 +44,7 @@ public class MainFrame extends JFrame {
 	 */
 	public MainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 400, 400);
 		
 		
 		//各パネルをMainFrameに追加
@@ -60,6 +68,34 @@ public class MainFrame extends JFrame {
         SearchPanel.setVisible(false);
         this.setBounds(100, 100, 400, 200);
 
+        try {
+            //ファイルを読み込む
+            FileReader fr = new FileReader("/Users/Naoya/mine/helper-caravan/富士見サロン会員情報.csv");
+            BufferedReader br = new BufferedReader(fr);
+
+            //読み込んだファイルを１行ずつ処理する
+            String line;
+            StringTokenizer token = null;
+            int i = 0;
+            int j = 0;
+            while ((line = br.readLine()) != null) {
+                //区切り文字","で分割する
+                token = new StringTokenizer(line, ",");
+                while(token.hasMoreTokens())
+                {
+                	MemberInfo[i][j] = token.nextToken();
+            		System.out.println(MemberInfo[i][j]);          	
+                	j++;
+                }
+                j = 0;
+                i++;
+            }
+            br.close();
+        }
+        catch(IOException ex) {
+            //例外発生時処理
+            ex.printStackTrace();        	
+        }
 	}
 
 	//表示するパネルを変更する

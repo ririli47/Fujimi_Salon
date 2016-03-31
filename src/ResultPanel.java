@@ -11,4 +11,8 @@ public class ResultPanel extends JPanel {
 		this.setName("ResultPanel");
 	}
 
+	void pc()
+	{
+		mf.ChangePanel(mf.PanelNames[1], mf.PanelNames[0]);
+	}
 }

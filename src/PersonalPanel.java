@@ -11,4 +11,8 @@ public class PersonalPanel extends JPanel {
 		this.setName("PersonalPanel");
 	}
 
+	void pc()
+	{
+		mf.ChangePanel(mf.PanelNames[1], mf.PanelNames[0]);
+	}
 }

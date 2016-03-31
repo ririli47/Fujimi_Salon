@@ -11,4 +11,8 @@ public class SearchPanel extends JPanel {
 		this.setName("SearchPanel");
 	}
 
+	void pc()
+	{
+		mf.ChangePanel(mf.PanelNames[1], mf.PanelNames[0]);
+	}
 }

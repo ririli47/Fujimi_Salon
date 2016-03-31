@@ -11,4 +11,8 @@ public class RegisterPanel extends JPanel {
 		this.setName("RegisterPanel");
 	}
 
+	void pc()
+	{
+		mf.ChangePanel(mf.PanelNames[1], mf.PanelNames[0]);
+	}
 }
