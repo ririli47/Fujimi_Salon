@@ -60,7 +60,10 @@ public class TopPanel extends JPanel {
 		  	@Override
 		  	public void mouseClicked(MouseEvent e) {
 		  		Row = table.getSelectedRow();
-		  		pc(Row);
+		  		String Id = tableModel.getValueAt(Row, 0).toString();
+				System.out.println(Id);
+
+		  		cp(Id);
 		  	}
 		  });
 		  table.setBackground(SystemColor.window);
@@ -83,10 +86,14 @@ public class TopPanel extends JPanel {
 	        tableModel.addRow(aryList.get(i));
 	      }
 		
-		System.out.println(mf.MemberInfo[1][0]);
+		//デバッグ
+		//System.out.println(mf.MemberInfo[1][0]);
 	}
-	void pc(int Row)
+	void cp(String Id)
 	{
+		mf.Global = Integer.parseInt(Id);
+		mf.Output();
+		
 		//old next
 		mf.ChangePanel(mf.PanelNames[0], mf.PanelNames[1]);
 	}

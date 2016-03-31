@@ -18,8 +18,10 @@ import javax.swing.JMenu;
 public class MainFrame extends JFrame {
 
 	//ファイルから読み込んだ会員情報
-	//マジックナンバーとして会員を100人、データを16個として想定
-	String MemberInfo[][] = new String[100][16];
+	//マジックナンバーとして会員を100人、データを13個として想定
+	String MemberInfo[][] = new String[100][13];
+	String PersonalMemberInfo[] = new String[13];
+	int Global;
 	
 	//各パネルのインスタンスを生成
 	public String[] PanelNames = {"TopPanel", "PersonalPanel", "RegisterPanel", "ResultPanel", "SearchPanel"};
@@ -66,21 +68,21 @@ public class MainFrame extends JFrame {
 		getContentPane().add(TopPanel);
 		TopPanel.setVisible(true);
         
+		PersonalPanel.setSize(712, 440);
 		getContentPane().add(PersonalPanel);
         PersonalPanel.setVisible(false);
-        this.setBounds(100, 100, 712, 440);
 
+		RegisterPanel.setSize(712, 440);
         getContentPane().add(RegisterPanel);
         RegisterPanel.setVisible(false);
-        this.setBounds(100, 100, 400, 200);
 
+		ResultPanel.setSize(712, 440);
         getContentPane().add(ResultPanel);
         ResultPanel.setVisible(false);
-        this.setBounds(100, 100, 400, 200);
 
+		SearchPanel.setSize(712, 440);
         getContentPane().add(SearchPanel);
         SearchPanel.setVisible(false);
-        this.setBounds(100, 100, 400, 200);
         
         setJMenuBar(menuBar);
         
@@ -150,23 +152,29 @@ public class MainFrame extends JFrame {
         //次のパネルを表示する
         if(next == PanelNames[0])
         {
-            TopPanel.setVisible(false);
+            TopPanel.setVisible(true);
         }
         else if(next == PanelNames[1])
         {
-            PersonalPanel.setVisible(false);
+            PersonalPanel.setVisible(true);
         }
         else if(next == PanelNames[2])
         {
-            RegisterPanel.setVisible(false);
+            RegisterPanel.setVisible(true);
         }
         else if(next == PanelNames[3])
         {
-            ResultPanel.setVisible(false);
+            ResultPanel.setVisible(true);
         }
         else if(next == PanelNames[4])
         {
-            SearchPanel.setVisible(false);
+            SearchPanel.setVisible(true);
         }
+	}
+	
+	//PersonalPanelに情報を吐き出す
+	public void Output()
+	{
+		PersonalPanel.SetInfo();
 	}
 }
