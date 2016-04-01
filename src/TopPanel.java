@@ -29,7 +29,7 @@ public class TopPanel extends JPanel {
 	public int Row;
 	private JTable table;
 	
-	private String[] columnNames = {"ID", "名前", "住所", "会社名", "役職", "メールアドレス", "電話番号", "誕生日", "来店回数", "ボトルキープ", "グラスキープ", "会費納入方法", "備考"};
+	private String[] columnNames = {"通し番号", "ID", "名前", "住所", "会社名", "役職", "メールアドレス", "電話番号", "誕生日", "来店回数", "ボトルキープ", "グラスキープ", "会費納入方法", "備考"};
 	
 	DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 	ArrayList<String[]> aryList= new ArrayList<String[]>();
@@ -61,8 +61,7 @@ public class TopPanel extends JPanel {
 		  	public void mouseClicked(MouseEvent e) {
 		  		Row = table.getSelectedRow();
 		  		String Id = tableModel.getValueAt(Row, 0).toString();
-				System.out.println(Id);
-
+				//System.out.println(Id);
 		  		cp(Id);
 		  	}
 		  });
@@ -74,27 +73,33 @@ public class TopPanel extends JPanel {
 	
 	}
 
+	void Re()
+	{
+		aryList.clear();
+	    tableModel.setRowCount(0);
+
+		ReadData();
+	}
+	
 	void ReadData()
 	{
 		//ArrayListに配列 会員情報のデータをコピー
 	    for(int i = 0 ; i < mf.MemberInfo.length ; i++){
-	      aryList.add(mf.MemberInfo[i].clone());//参照渡し.
+	      aryList.add(mf.MemberInfo[i]);//参照渡し.
 	    }
 		
-	   
 		for(int i = 0 ; i <  aryList.size() ; i++){
 	        tableModel.addRow(aryList.get(i));
 	      }
-		
 		//デバッグ
-		//System.out.println(mf.MemberInfo[1][0]);
+		//System.out.println(mf.MemberInfo[0][1]);
 	}
 	void cp(String Id)
 	{
-		mf.Global = Integer.parseInt(Id);
+		mf.Global = Integer.parseInt(Id) -1;
 		mf.Output();
 		
-		//old next
+		//                   old               next
 		mf.ChangePanel(mf.PanelNames[0], mf.PanelNames[1]);
 	}
 }

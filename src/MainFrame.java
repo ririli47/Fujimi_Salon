@@ -19,8 +19,8 @@ public class MainFrame extends JFrame {
 
 	//ファイルから読み込んだ会員情報
 	//マジックナンバーとして会員を100人、データを13個として想定
-	String MemberInfo[][] = new String[100][13];
-	String PersonalMemberInfo[] = new String[13];
+	String MemberInfo[][] = new String[100][14];
+	String PersonalMemberInfo[] = new String[14];
 	int Global;
 	
 	//各パネルのインスタンスを生成
@@ -45,7 +45,7 @@ public class MainFrame extends JFrame {
 				try {
 					MainFrame frame = new MainFrame();
 					//黄金比
-					frame.setSize(712, 440);
+					frame.setSize(712, 480);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -60,7 +60,7 @@ public class MainFrame extends JFrame {
 	public MainFrame() {
 		setTitle("富士見サロン会員管理システム");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100,100, 400, 400);
+		setBounds(100, 100, 400, 400);
 		
 		
 		//各パネルをMainFrameに追加
@@ -170,6 +170,12 @@ public class MainFrame extends JFrame {
         {
             SearchPanel.setVisible(true);
         }
+	}
+	
+	//一覧を読み込み直す
+	public void Reload()
+	{
+		TopPanel.Re();
 	}
 	
 	//PersonalPanelに情報を吐き出す
