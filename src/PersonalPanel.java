@@ -1,6 +1,8 @@
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 import java.awt.event.FocusAdapter;
@@ -19,6 +21,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 
 public class PersonalPanel extends JPanel {
 
@@ -261,6 +264,7 @@ public class PersonalPanel extends JPanel {
 				//mf.MemberInfo[mf.Global][12] = textField_11.getText();
 				mf.MemberInfo[mf.Global][13] = textField_12.getText();
 					
+				SetInfo();
 				
 	            String line[] = new String[100];
 				int i = 0;
@@ -269,6 +273,7 @@ public class PersonalPanel extends JPanel {
 					String Write = "";
 					
 					
+					//あえて13
 					for(i = 0;  i < 13;  i++)
 						Write = Write + mf.MemberInfo[mf.Global][i] + ",";
 					Write = Write + mf.MemberInfo[mf.Global][i];
@@ -306,6 +311,8 @@ public class PersonalPanel extends JPanel {
 				      System.out.println(ee);
 				    }
 				  }
+			
+
 		});
 		button_2.setBounds(453, 75, 117, 29);
 		add(button_2);
@@ -320,10 +327,90 @@ public class PersonalPanel extends JPanel {
 		button_3.setBounds(453, 131, 117, 29);
 		add(button_3);
 		
+		JButton button_4 = new JButton("削除");
+		button_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				JFrame frame = new JFrame();
+
+				int option = JOptionPane.showConfirmDialog(frame, "本当に削除しますか？");
+				
+				if (option == JOptionPane.YES_OPTION){
+				      delete();
+				    }else if (option == JOptionPane.NO_OPTION){
+				      //何もしない
+				    }else if (option == JOptionPane.CANCEL_OPTION){
+				      //何もしない
+				    }
+			}
+		});
+		button_4.setBounds(453, 187, 117, 29);
+		add(button_4);
+		
 		
 		
 	}
 
+	
+	void delete()
+	{
+		for(int i = 1;  i < 14;  i++)
+		{
+			mf.MemberInfo[mf.Global][i] = "";
+		}
+		
+		if(mf.MemberInfo[mf.Global+1][1] != "")
+		{
+			for(int i = mf.Global;  i < 100;  i++)
+			{
+				for(int j = 1;  j < 14;  j++)
+					mf.MemberInfo[i][j] = mf.MemberInfo[i+1][j];
+				
+				if(mf.MemberInfo[i+1][1] == "")
+				{
+					for(int j = 1;  j < 14;  j++)
+						mf.MemberInfo[i][j] = "";
+					break;
+				}
+			}
+		}
+		
+		SetInfo();
+		
+		String line[] = new String[100];
+		int i = 0;
+		int j = 0;
+		
+		//書き込む文字列
+		String Write[] = new String[100];
+		
+		for(i = 0;  i < 100;  i++)
+		{
+			Write[i] = "";
+		}
+		
+		for(i = 0;  i < 100;  i++)
+		{
+			for(j = 0;  j < 13;  j++)
+			{
+				Write[i] = Write[i] + mf.MemberInfo[i][j] + ",";
+			}
+			Write[i] = Write[i] + mf.MemberInfo[i][j];
+		}
+		//ファイル書き込み
+		try{
+		      File file = new File("/Users/Naoya/mine/helper-caravan/富士見サロン会員情報.csv");
+
+		      PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file)));
+
+		      for(i = 0;  i < 100;  i++)
+		      	pw.println(Write[i]);
+
+		        pw.close();
+		    }catch(IOException ee){
+		      System.out.println(ee);
+		    }
+	  }
 	
 	void SetInfo()
 	{

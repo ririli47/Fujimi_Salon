@@ -14,14 +14,17 @@ import java.awt.Font;
 import java.awt.Insets;
 import javax.swing.SwingConstants;
 import javax.swing.JMenu;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MainFrame extends JFrame {
 
 	//ファイルから読み込んだ会員情報
-	//マジックナンバーとして会員を100人、データを13個として想定
+	//マジックナンバーとして会員を100人、データを14個として想定
 	String MemberInfo[][] = new String[100][14];
 	String PersonalMemberInfo[] = new String[14];
 	int Global;
+	int culum_no;
 	
 	//各パネルのインスタンスを生成
 	public String[] PanelNames = {"TopPanel", "PersonalPanel", "RegisterPanel", "ResultPanel", "SearchPanel"};
@@ -34,7 +37,18 @@ public class MainFrame extends JFrame {
 	private final JMenu menu = new JMenu("新規登録");
 	private final JMenu menu_1 = new JMenu("検索");
 	private final JMenuItem menuItem = new JMenuItem("新規登録");
-	private final JMenuItem menuItem_1 = new JMenuItem("検索");
+	private final JMenuItem mntmId = new JMenuItem("ID");
+	private final JMenuItem mntmNewMenuItem = new JMenuItem("住所");
+	private final JMenuItem menuItem_1 = new JMenuItem("会社名");
+	private final JMenuItem menuItem_2 = new JMenuItem("役職");
+	private final JMenuItem menuItem_3 = new JMenuItem("メールアドレス");
+	private final JMenuItem menuItem_4 = new JMenuItem("電話番号");
+	private final JMenuItem menuItem_5 = new JMenuItem("誕生日");
+	private final JMenuItem menuItem_6 = new JMenuItem("ボトルキープ");
+	private final JMenuItem menuItem_7 = new JMenuItem("グラスキープ");
+	private final JMenuItem menuItem_8 = new JMenuItem("会費情報");
+	private final JMenuItem menuItem_9 = new JMenuItem("備考");
+	private final JMenuItem menuItem_10 = new JMenuItem("来店回数");
 	
 	/**
 	 * Launch the application.
@@ -58,6 +72,15 @@ public class MainFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public MainFrame() {
+		
+		for(int i = 0;  i < 100;  i++)
+		{
+			for(int j = 0; j < 14; j++)
+			{
+				MemberInfo[i][j] = "";
+			}
+		}
+		
 		setTitle("富士見サロン会員管理システム");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 400);
@@ -87,12 +110,118 @@ public class MainFrame extends JFrame {
         setJMenuBar(menuBar);
         
         menuBar.add(menu);
+        menuItem.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		for(int i = 0;  i < 100;  i++)
+        		{
+        			if(MemberInfo[i][1] == null)
+        			{
+        				TopPanel.cp(MemberInfo[i][0]);
+        				break;
+        			}
+        		}
+        	}
+        });
         
         menu.add(menuItem);
         
         menuBar.add(menu_1);
+        mntmId.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		culum_no = 1;
+        		SearchPanel.cp();
+        	}
+        });
+        
+        menu_1.add(mntmId);
+        mntmNewMenuItem.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		culum_no = 3;
+        		SearchPanel.cp();
+        	}
+        });
+        
+        menu_1.add(mntmNewMenuItem);
+        menuItem_1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		culum_no = 4;
+        		SearchPanel.cp();
+        	}
+        });
         
         menu_1.add(menuItem_1);
+        menuItem_2.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		culum_no = 5;
+        		SearchPanel.cp();
+        	}
+        });
+        
+        menu_1.add(menuItem_2);
+        menuItem_3.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		culum_no = 6;
+        		SearchPanel.cp();
+        	}
+        });
+        
+        menu_1.add(menuItem_3);
+        menuItem_4.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		culum_no = 7;
+        		SearchPanel.cp();
+        	}
+        });
+        
+        menu_1.add(menuItem_4);
+        menuItem_5.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		culum_no = 8;
+        		SearchPanel.cp();
+        	}
+        });
+        
+        menu_1.add(menuItem_5);
+        menuItem_6.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		culum_no = 9;
+        		SearchPanel.cp();
+        	}
+        });
+        menuItem_10.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		culum_no = 10;
+        		SearchPanel.cp();
+        	}
+        });
+        
+        menu_1.add(menuItem_10);
+        
+        menu_1.add(menuItem_6);
+        menuItem_7.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		culum_no = 11;
+        		SearchPanel.cp();
+        	}
+        });
+        
+        menu_1.add(menuItem_7);
+        menuItem_8.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		culum_no = 12;
+        		SearchPanel.cp();
+        	}
+        });
+        
+        menu_1.add(menuItem_8);
+        menuItem_9.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		culum_no = 13;
+        		SearchPanel.cp();
+        	}
+        });
+        
+        menu_1.add(menuItem_9);
 
         try {
             //ファイルを読み込む

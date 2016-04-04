@@ -29,7 +29,9 @@ public class TopPanel extends JPanel {
 	public int Row;
 	private JTable table;
 	
-	private String[] columnNames = {"通し番号", "ID", "名前", "住所", "会社名", "役職", "メールアドレス", "電話番号", "誕生日", "来店回数", "ボトルキープ", "グラスキープ", "会費納入方法", "備考"};
+	int num = 0;
+	
+	private String[] columnNames = {"通し番号", "ID", "名前", "住所", "会社名", "役職", "メールアドレス", "電話番号", "誕生日", "来店回数", "ボトルキープ", "グラスキープ", "会費情報", "備考"};
 	
 	DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 	ArrayList<String[]> aryList= new ArrayList<String[]>();
@@ -45,7 +47,15 @@ public class TopPanel extends JPanel {
 		btnNewButton.setBounds(10, 10, 100, 30);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ReadData();
+				if(num == 0)
+				{
+					ReadData();
+					num++;
+				}
+				else
+				{
+					Re();
+				}
 			}
 		});
 		add(btnNewButton);
