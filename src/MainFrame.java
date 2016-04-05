@@ -25,7 +25,7 @@ public class MainFrame extends JFrame {
 	String PersonalMemberInfo[] = new String[InfoNum];
 	int Global;
 	int culum_no;
-	
+
 	//各パネルのインスタンスを生成
 	public String[] PanelNames = {"TopPanel", "PersonalPanel", "RegisterPanel", "ResultPanel", "SearchPanel"};
     TopPanel TopPanel = new TopPanel(this, PanelNames[0]);
@@ -312,5 +312,6 @@ public class MainFrame extends JFrame {
 	public void Output()
 	{
 		PersonalPanel.SetInfo();
+		PersonalPanel.SetcomboBox();
 	}
 }

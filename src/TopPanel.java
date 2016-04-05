@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Font;
 
 
 public class TopPanel extends JPanel {
@@ -40,6 +41,7 @@ public class TopPanel extends JPanel {
 		 
 		
 		JButton btnNewButton = new JButton("読み込み");
+		btnNewButton.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 		btnNewButton.setBounds(10, 10, 100, 30);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

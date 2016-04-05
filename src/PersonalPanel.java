@@ -41,6 +41,10 @@ public class PersonalPanel extends JPanel {
 	private JTextField textField_11;
 	private JTextField textField_12;
 	
+	JComboBox<String> comboBox = new JComboBox<String>();
+	JComboBox<String> comboBox_1 = new JComboBox<String>();
+	JComboBox<String> comboBox_2 = new JComboBox<String>();
+	
 	public PersonalPanel(MainFrame m, String s) {
 		setBackground(SystemColor.window);
 		mf = m;
@@ -165,19 +169,19 @@ public class PersonalPanel extends JPanel {
 		textField_12.setBounds(141, 355, 300, 26);
 		add(textField_12);
 		
-		JComboBox<String> comboBox = new JComboBox<String>();
+		//JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.addItem("個人");
 		comboBox.addItem("法人");
 		comboBox.setBounds(456, 328, 80, 27);
 		this.add(comboBox);
 		
-		JComboBox<String> comboBox_1 = new JComboBox<String>();
+		//JComboBox<String> comboBox_1 = new JComboBox<String>();
 		comboBox_1.addItem("月会費");
 		comboBox_1.addItem("年会費");
 		comboBox_1.setBounds(533, 328, 95, 27);
 		add(comboBox_1);
 		
-		JComboBox<String> comboBox_2 = new JComboBox<String>();
+		//JComboBox<String> comboBox_2 = new JComboBox<String>();
 		comboBox_2.addItem("現金");
 		comboBox_2.addItem("カード");
 		comboBox_2.setBounds(626, 328, 80, 27);
@@ -185,11 +189,12 @@ public class PersonalPanel extends JPanel {
 		
 		JButton button = new JButton("前へ");
 		button.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(mf.Global != 0)
 					mf.Global--;
 				SetInfo();
-				SetcomboBox(comboBox, comboBox_1, comboBox_2);
+				SetcomboBox();
 			}
 		});
 		button.setBounds(453, 19, 117, 29);
@@ -197,11 +202,12 @@ public class PersonalPanel extends JPanel {
 		
 		JButton button_1 = new JButton("次へ");
 		button_1.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(mf.Global < mf.MemberInfo.length-1)
 					mf.Global++;
 				SetInfo();
-				SetcomboBox(comboBox, comboBox_1, comboBox_2);
+				SetcomboBox();
 			}
 		});
 		button_1.setBounds(589, 19, 117, 29);
@@ -212,6 +218,7 @@ public class PersonalPanel extends JPanel {
 		
 		JButton button_2 = new JButton("編集内容を保存");
 		button_2.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 				for(int i = 0;  i < mf.MemberNum;  i++)
@@ -263,7 +270,7 @@ public class PersonalPanel extends JPanel {
 				
 				SetInfo();
 				
-				SetcomboBox(comboBox, comboBox_1, comboBox_2);
+				SetcomboBox();
 				
 	            String line[] = new String[mf.MemberNum];
 				int i = 0;
@@ -317,6 +324,7 @@ public class PersonalPanel extends JPanel {
 		
 		JButton button_3 = new JButton("一覧に戻る");
 		button_3.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				mf.Reload();
 				cp();
@@ -327,6 +335,7 @@ public class PersonalPanel extends JPanel {
 		
 		JButton button_4 = new JButton("削除");
 		button_4.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 				JFrame frame = new JFrame();
@@ -410,7 +419,7 @@ public class PersonalPanel extends JPanel {
 		    }
 	  }
 	
-	void SetcomboBox(JComboBox<String> comboBox, JComboBox<String> comboBox_1, JComboBox<String> comboBox_2)
+	void SetcomboBox()
 	{
 
 		if(mf.MemberInfo[mf.Global][12].equals("個人　月会費　現金"))
@@ -467,7 +476,6 @@ public class PersonalPanel extends JPanel {
 	
 	void SetInfo()
 	{
-
 		//System.out.println(mf.MemberInfo[mf.Global][9]);
 		textField.setText(mf.MemberInfo[mf.Global][1]);
 		textField_1.setText(mf.MemberInfo[mf.Global][2]);
@@ -482,7 +490,6 @@ public class PersonalPanel extends JPanel {
 		textField_10.setText(mf.MemberInfo[mf.Global][11]);
 		textField_11.setText(mf.MemberInfo[mf.Global][12]);
 		textField_12.setText(mf.MemberInfo[mf.Global][13]);
-
 		
 	}
 	
