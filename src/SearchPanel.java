@@ -11,6 +11,11 @@ import java.awt.event.ActionEvent;
 public class SearchPanel extends JPanel {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Create the panel.
 	 */
 	MainFrame mf;

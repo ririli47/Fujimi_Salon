@@ -1,27 +1,23 @@
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JList;
 import javax.swing.JTable;
-import java.awt.Color;
 import java.awt.SystemColor;
 import java.util.ArrayList;
 
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
-import javax.swing.UIManager;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 
 public class TopPanel extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * Create the panel.
 	 */

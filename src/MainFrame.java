@@ -1,4 +1,3 @@
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -6,19 +5,18 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import java.awt.Font;
-import java.awt.Insets;
-import javax.swing.SwingConstants;
 import javax.swing.JMenu;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class MainFrame extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//ファイルから読み込んだ会員情報
 	//マジックナンバーとして会員を100人、データを14個として想定
 	String MemberInfo[][] = new String[100][14];
@@ -114,7 +112,7 @@ public class MainFrame extends JFrame {
         	public void actionPerformed(ActionEvent e) {
         		for(int i = 0;  i < 100;  i++)
         		{
-        			if(MemberInfo[i][1] == null)
+        			if(MemberInfo[i][1] == "")
         			{
         				TopPanel.cp(MemberInfo[i][0]);
         				break;
@@ -256,24 +254,25 @@ public class MainFrame extends JFrame {
 	//表示するパネルを変更する
 	public void ChangePanel(String old, String next)
 	{
+		old = next;
 		//現在のパネルを非表示にする
-        if(old == PanelNames[0])
+        if(old != PanelNames[0])
         {
             TopPanel.setVisible(false);
         }
-        else if(old == PanelNames[1])
+        if(old != PanelNames[1])
         {
             PersonalPanel.setVisible(false);
         }
-        else if(old == PanelNames[2])
+        if(old != PanelNames[2])
         {
             RegisterPanel.setVisible(false);
         }
-        else if(old == PanelNames[3])
+        if(old != PanelNames[3])
         {
             ResultPanel.setVisible(false);
         }
-        else if(old == PanelNames[4])
+        if(old != PanelNames[4])
         {
             SearchPanel.setVisible(false);
         }

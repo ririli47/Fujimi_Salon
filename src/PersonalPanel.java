@@ -1,12 +1,8 @@
 import javax.swing.JPanel;
-import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.File;
@@ -14,8 +10,6 @@ import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.PrintWriter;
 import java.io.IOException;
-import java.util.StringTokenizer;
-import java.awt.Color;
 import java.awt.SystemColor;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -25,6 +19,10 @@ import javax.swing.JFrame;
 
 public class PersonalPanel extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * Create the panel.
 	 */
@@ -194,19 +192,19 @@ public class PersonalPanel extends JPanel {
 		button_1.setBounds(589, 19, 117, 29);
 		add(button_1);
 		
-		JComboBox comboBox = new JComboBox();
+		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.addItem("個人");
 		comboBox.addItem("法人");
 		comboBox.setBounds(456, 328, 80, 27);
 		add(comboBox);
 		
-		JComboBox comboBox_1 = new JComboBox();
+		JComboBox<String> comboBox_1 = new JComboBox<String>();
 		comboBox_1.addItem("月会費");
 		comboBox_1.addItem("年会費");
 		comboBox_1.setBounds(533, 328, 95, 27);
 		add(comboBox_1);
 		
-		JComboBox comboBox_2 = new JComboBox();
+		JComboBox<String> comboBox_2 = new JComboBox<String>();
 		comboBox_2.addItem("現金");
 		comboBox_2.addItem("カード");
 		comboBox_2.setBounds(626, 328, 80, 27);
@@ -377,7 +375,6 @@ public class PersonalPanel extends JPanel {
 		
 		SetInfo();
 		
-		String line[] = new String[100];
 		int i = 0;
 		int j = 0;
 		
