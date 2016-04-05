@@ -19,8 +19,10 @@ public class MainFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	//ファイルから読み込んだ会員情報
 	//マジックナンバーとして会員を100人、データを14個として想定
-	String MemberInfo[][] = new String[100][14];
-	String PersonalMemberInfo[] = new String[14];
+	int MemberNum = 100;
+	int InfoNum = 14;
+	String MemberInfo[][] = new String[MemberNum][InfoNum];
+	String PersonalMemberInfo[] = new String[InfoNum];
 	int Global;
 	int culum_no;
 	
@@ -71,9 +73,9 @@ public class MainFrame extends JFrame {
 	 */
 	public MainFrame() {
 		
-		for(int i = 0;  i < 100;  i++)
+		for(int i = 0;  i < MemberNum;  i++)
 		{
-			for(int j = 0; j < 14; j++)
+			for(int j = 0; j < InfoNum; j++)
 			{
 				MemberInfo[i][j] = "";
 			}
@@ -110,7 +112,7 @@ public class MainFrame extends JFrame {
         menuBar.add(menu);
         menuItem.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		for(int i = 0;  i < 100;  i++)
+        		for(int i = 0;  i < MemberNum;  i++)
         		{
         			if(MemberInfo[i][1] == "")
         			{
@@ -182,13 +184,13 @@ public class MainFrame extends JFrame {
         menu_1.add(menuItem_5);
         menuItem_6.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		culum_no = 9;
+        		culum_no = 10;
         		SearchPanel.cp();
         	}
         });
         menuItem_10.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		culum_no = 10;
+        		culum_no = 9;
         		SearchPanel.cp();
         	}
         });
