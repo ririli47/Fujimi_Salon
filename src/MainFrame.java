@@ -1,8 +1,4 @@
 import java.awt.EventQueue;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.StringTokenizer;
 
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
@@ -10,6 +6,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JMenu;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class MainFrame extends JFrame {
 
@@ -108,8 +105,10 @@ public class MainFrame extends JFrame {
         SearchPanel.setVisible(false);
         
         setJMenuBar(menuBar);
+        menu.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
         
         menuBar.add(menu);
+        menuItem.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
         menuItem.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		for(int i = 0;  i < MemberNum;  i++)
@@ -124,6 +123,7 @@ public class MainFrame extends JFrame {
         });
         
         menu.add(menuItem);
+        menu_1.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
         
         menuBar.add(menu_1);
         mntmId.addActionListener(new ActionListener() {
@@ -223,6 +223,7 @@ public class MainFrame extends JFrame {
         
         menu_1.add(menuItem_9);
 
+        /*
         try {
             //ファイルを読み込む
             FileReader fr = new FileReader("/Users/Naoya/mine/helper-caravan/富士見サロン会員情報.csv");
@@ -251,6 +252,7 @@ public class MainFrame extends JFrame {
             //例外発生時処理
             ex.printStackTrace();        	
         }
+        */
 	}
 
 	//表示するパネルを変更する

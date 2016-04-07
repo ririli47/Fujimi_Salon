@@ -2,6 +2,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import java.awt.SystemColor;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
@@ -10,7 +11,11 @@ import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.awt.Font;
+import javax.swing.JTextField;
 
 
 public class TopPanel extends JPanel {
@@ -32,6 +37,7 @@ public class TopPanel extends JPanel {
 	
 	DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 	ArrayList<String[]> aryList= new ArrayList<String[]>();
+	private JTextField textField;
 	
 	public TopPanel(MainFrame m, String s) {
 		mf = m;
@@ -45,14 +51,90 @@ public class TopPanel extends JPanel {
 		btnNewButton.setBounds(10, 10, 100, 30);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String place = "";
 				if(num == 0)
 				{
-					ReadData();
+					place = textField.getText();
+					
+					try {
+			            //ファイルを読み込む
+			            //FileReader fr = new FileReader("/Users/Naoya/mine/helper-caravan/富士見サロン会員情報.csv");
+			            FileReader fr = new FileReader(place);
+			            BufferedReader br = new BufferedReader(fr);
+
+			            //読み込んだファイルを１行ずつ処理する
+			            String line;
+			            StringTokenizer token = null;
+			            int i = 0;
+			            int j = 0;
+			            while ((line = br.readLine()) != null) {
+			                //区切り文字","で分割する
+			                token = new StringTokenizer(line, ",");
+			                while(token.hasMoreTokens())
+			                {
+			                	mf.MemberInfo[i][j] = token.nextToken();
+			            		//System.out.println(MemberInfo[i][j]);          	
+			                	j++;
+			                }
+			                j = 0;
+			                i++;
+			            }
+			            br.close();
+			            
+						ReadData();
+
+			        }
+			        catch(IOException ex) {
+			            //例外発生時処理
+			            ex.printStackTrace();        	
+			        }
+					
 					num++;
 				}
 				else
 				{
-					Re();
+					if(place.equals(textField.getText()))
+					{
+						Re();
+					}
+					else
+					{
+						place = textField.getText();
+						
+						try {
+				            //ファイルを読み込む
+				            //FileReader fr = new FileReader("/Users/Naoya/mine/helper-caravan/富士見サロン会員情報.csv");
+				            FileReader fr = new FileReader(place);
+				            BufferedReader br = new BufferedReader(fr);
+
+				            //読み込んだファイルを１行ずつ処理する
+				            String line;
+				            StringTokenizer token = null;
+				            int i = 0;
+				            int j = 0;
+				            while ((line = br.readLine()) != null) {
+				                //区切り文字","で分割する
+				                token = new StringTokenizer(line, ",");
+				                while(token.hasMoreTokens())
+				                {
+				                	mf.MemberInfo[i][j] = token.nextToken();
+				            		//System.out.println(MemberInfo[i][j]);          	
+				                	j++;
+				                }
+				                j = 0;
+				                i++;
+				            }
+				            br.close();
+				            //ReadData();
+							Re();
+				        }
+				        catch(IOException ex) {
+				            //例外発生時処理
+				            ex.printStackTrace();        	
+				        }
+						
+						num++;
+					}
 				}
 			}
 		});
@@ -78,6 +160,11 @@ public class TopPanel extends JPanel {
 		  table.setSize(712, 400);
 		  //table.setBounds(20, 51, 975, 0);
 		  scrollPane.setViewportView(table);
+		  
+		  textField = new JTextField();
+		  textField.setBounds(122, 11, 535, 26);
+		  add(textField);
+		  textField.setColumns(10);
 	
 	}
 
