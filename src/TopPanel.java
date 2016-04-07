@@ -2,7 +2,6 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import java.awt.SystemColor;
 import java.util.ArrayList;
-import java.util.StringTokenizer;
 
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
@@ -32,12 +31,13 @@ public class TopPanel extends JPanel {
 	private JTable table;
 	
 	int num = 0;
+	String rent = "";
 	
 	private String[] columnNames = {"通し番号", "ID", "名前", "住所", "会社名", "役職", "メールアドレス", "電話番号", "誕生日", "来店回数", "ボトルキープ", "グラスキープ", "会費情報", "備考"};
 	
 	DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 	ArrayList<String[]> aryList= new ArrayList<String[]>();
-	private JTextField textField;
+	private JTextField txtusersnaoyaminehelpercaravancsv;
 	
 	public TopPanel(MainFrame m, String s) {
 		mf = m;
@@ -51,10 +51,10 @@ public class TopPanel extends JPanel {
 		btnNewButton.setBounds(10, 10, 100, 30);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String place = "";
+				String place = txtusersnaoyaminehelpercaravancsv.getText();
 				if(num == 0)
 				{
-					place = textField.getText();
+					
 					
 					try {
 			            //ファイルを読み込む
@@ -64,25 +64,25 @@ public class TopPanel extends JPanel {
 
 			            //読み込んだファイルを１行ずつ処理する
 			            String line;
-			            StringTokenizer token = null;
+			            String[] lines;
 			            int i = 0;
 			            int j = 0;
-			            while ((line = br.readLine()) != null) {
-			                //区切り文字","で分割する
-			                token = new StringTokenizer(line, ",");
-			                while(token.hasMoreTokens())
-			                {
-			                	mf.MemberInfo[i][j] = token.nextToken();
-			            		//System.out.println(MemberInfo[i][j]);          	
-			                	j++;
-			                }
-			                j = 0;
-			                i++;
+			            
+			            while((line = br.readLine()) != null){
+			            	lines = line.split(",", -1);
+			            	
+			            	for(j = 0;  j < mf.InfoNum;  j++)
+			            	{
+			            		mf.MemberInfo[i][j] = lines[j];
+			            	}
+			            	i++;
 			            }
+			            
+			            
 			            br.close();
 			            
 						ReadData();
-
+						rent = place;
 			        }
 			        catch(IOException ex) {
 			            //例外発生時処理
@@ -93,13 +93,13 @@ public class TopPanel extends JPanel {
 				}
 				else
 				{
-					if(place.equals(textField.getText()))
+					if(rent.equals(txtusersnaoyaminehelpercaravancsv.getText()))
 					{
 						Re();
 					}
 					else
 					{
-						place = textField.getText();
+						place = txtusersnaoyaminehelpercaravancsv.getText();
 						
 						try {
 				            //ファイルを読み込む
@@ -109,24 +109,26 @@ public class TopPanel extends JPanel {
 
 				            //読み込んだファイルを１行ずつ処理する
 				            String line;
-				            StringTokenizer token = null;
+				            String[] lines;
 				            int i = 0;
 				            int j = 0;
-				            while ((line = br.readLine()) != null) {
-				                //区切り文字","で分割する
-				                token = new StringTokenizer(line, ",");
-				                while(token.hasMoreTokens())
-				                {
-				                	mf.MemberInfo[i][j] = token.nextToken();
-				            		//System.out.println(MemberInfo[i][j]);          	
-				                	j++;
-				                }
-				                j = 0;
-				                i++;
+				            
+				           
+				            while((line = br.readLine()) != null){
+				            	lines = line.split(",", -1);
+				            	
+				            	for(j = 0;  j < mf.InfoNum;  j++)
+				            	{
+				            		mf.MemberInfo[i][j] = lines[j];
+				            	}
+				            	i++;
 				            }
+				            
 				            br.close();
 				            //ReadData();
 							Re();
+							
+							rent = place;
 				        }
 				        catch(IOException ex) {
 				            //例外発生時処理
@@ -161,10 +163,11 @@ public class TopPanel extends JPanel {
 		  //table.setBounds(20, 51, 975, 0);
 		  scrollPane.setViewportView(table);
 		  
-		  textField = new JTextField();
-		  textField.setBounds(122, 11, 535, 26);
-		  add(textField);
-		  textField.setColumns(10);
+		  txtusersnaoyaminehelpercaravancsv = new JTextField();
+		  txtusersnaoyaminehelpercaravancsv.setText("/Users/Naoya/mine/helper-caravan/富士見サロン会員情報.csv");
+		  txtusersnaoyaminehelpercaravancsv.setBounds(122, 11, 535, 26);
+		  add(txtusersnaoyaminehelpercaravancsv);
+		  txtusersnaoyaminehelpercaravancsv.setColumns(10);
 	
 	}
 

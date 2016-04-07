@@ -218,8 +218,19 @@ public class PersonalPanel extends JPanel {
 		
 		JButton button_2 = new JButton("編集内容を保存");
 		button_2.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				JFrame frame = new JFrame();
+
+				int option = JOptionPane.showConfirmDialog(frame, "変更を記録しますか？");
+				
+				if (option == JOptionPane.YES_OPTION){
+				      //次に進ませる;
+				    }else if (option == JOptionPane.NO_OPTION){
+				      return;
+				    }else if (option == JOptionPane.CANCEL_OPTION){
+				      return;
+				    }
 				
 				for(int i = 0;  i < mf.MemberNum;  i++)
 				{
