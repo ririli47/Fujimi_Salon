@@ -17,7 +17,7 @@ public class MainFrame extends JFrame {
 	//ファイルから読み込んだ会員情報
 	//マジックナンバーとして会員を100人、データを15個として想定
 	int MemberNum = 100;
-	int InfoNum = 15;
+	int InfoNum = 16;
 	String MemberInfo[][] = new String[MemberNum][InfoNum];
 	String PersonalMemberInfo[] = new String[InfoNum];
 	int Global;
@@ -47,6 +47,8 @@ public class MainFrame extends JFrame {
 	private final JMenuItem menuItem_9 = new JMenuItem("備考");
 	private final JMenuItem menuItem_10 = new JMenuItem("来店回数");
 	private final JMenuItem menuItem_12 = new JMenuItem("種別");
+	private final JMenuItem menuItem_13 = new JMenuItem("在室");
+
 	
 	/**
 	 * Launch the application.
@@ -57,7 +59,7 @@ public class MainFrame extends JFrame {
 				try {
 					MainFrame frame = new MainFrame();
 					frame.setResizable(false);
-					frame.setSize(712, 520);
+					frame.setSize(750, 520);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -85,23 +87,23 @@ public class MainFrame extends JFrame {
 		
 		
 		//各パネルをMainFrameに追加
-		TopPanel.setSize(712, 480);
+		TopPanel.setSize(750, 520);
 		getContentPane().add(TopPanel);
 		TopPanel.setVisible(true);
         
-		PersonalPanel.setSize(712, 480);
+		PersonalPanel.setSize(750, 520);
 		getContentPane().add(PersonalPanel);
         PersonalPanel.setVisible(false);
 
-		RegisterPanel.setSize(712, 480);
+		RegisterPanel.setSize(750, 520);
         getContentPane().add(RegisterPanel);
         RegisterPanel.setVisible(false);
 
-		ResultPanel.setSize(712, 480);
+		ResultPanel.setSize(750, 520);
         getContentPane().add(ResultPanel);
         ResultPanel.setVisible(false);
 
-		SearchPanel.setSize(712, 480);
+		SearchPanel.setSize(750, 520);
         getContentPane().add(SearchPanel);
         SearchPanel.setVisible(false);
         
@@ -232,6 +234,14 @@ public class MainFrame extends JFrame {
         });
         
         menu_1.add(menuItem_9);
+        menu_1.add(menuItem_13);
+        menuItem_13.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		culum_no = 15;
+        		SearchPanel.cp();
+        	}
+        });
+        
 
 	}
 

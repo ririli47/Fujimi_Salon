@@ -36,7 +36,7 @@ public class TopPanel extends JPanel {
 	int num = 0;
 	String rent = "";
 	
-	private String[] columnNames = {"通し番号", "ID", "種別", "名前", "住所", "会社名", "役職", "メールアドレス", "電話番号", "誕生日", "来店回数", "ボトルキープ", "グラスキープ", "会費情報", "備考"};
+	private String[] columnNames = {"通し番号", "ID", "種別", "名前", "住所", "会社名", "役職", "メールアドレス", "電話番号", "誕生日", "来店回数", "ボトルキープ", "グラスキープ", "会費情報", "備考", "在室状況"};
 	
 	DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 	ArrayList<String[]> aryList= new ArrayList<String[]>();
@@ -50,7 +50,7 @@ public class TopPanel extends JPanel {
 		//ファイルを読み込むボタンとその処理
 		JButton btnNewButton = new JButton("読み込み");
 		btnNewButton.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-		btnNewButton.setBounds(10, 10, 100, 30);
+		btnNewButton.setBounds(10, 5, 100, 30);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(num == 0)
@@ -93,7 +93,7 @@ public class TopPanel extends JPanel {
 		 
 		 JScrollPane scrollPane = new JScrollPane();
 		 scrollPane.setViewportBorder(null);
-		 scrollPane.setBounds(0, 40, 712, 440);
+		 scrollPane.setBounds(0, 40, 750, 500);
 		 this.add(scrollPane);
 		 
 		  table = new JTable(tableModel);
@@ -107,7 +107,7 @@ public class TopPanel extends JPanel {
 		  });
 		  table.setBackground(SystemColor.window);
 		  table.setLocation(0, 40);
-		  table.setSize(712, 440);
+		  table.setSize(790, 540);
 		  scrollPane.setViewportView(table);
 	
 	}

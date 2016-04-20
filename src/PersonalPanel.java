@@ -53,6 +53,7 @@ public class PersonalPanel extends JPanel {
 	JComboBox<String> comboBox_2 = new JComboBox<String>();
 
 	private JTextField textField_12;
+	private JTextField textField_13;
 	
 	public PersonalPanel(MainFrame m, String s) {
 		setBackground(SystemColor.window);
@@ -60,7 +61,7 @@ public class PersonalPanel extends JPanel {
 		this.setName("PersonalPanel");
 		setLayout(null);
 		
-		scrollPane.setBounds(141, 391, 300, 60);
+		scrollPane.setBounds(141, 378, 300, 60);
 		add(scrollPane);
 		
 		scrollPane.setViewportView(textArea);
@@ -68,134 +69,134 @@ public class PersonalPanel extends JPanel {
 		//表示ラベルの生成
 		JLabel lblId = new JLabel("ID *");
 		lblId.setBackground(SystemColor.window);
-		lblId.setBounds(32, 24, 109, 16);
+		lblId.setBounds(32, 11, 109, 16);
 		add(lblId);
 		
 		JLabel label = new JLabel("名前 *");
-		label.setBounds(32, 85, 109, 16);
+		label.setBounds(32, 72, 109, 16);
 		add(label);
 		
 		JLabel label_1 = new JLabel("住所");
-		label_1.setBounds(32, 113, 109, 16);
+		label_1.setBounds(32, 100, 109, 16);
 		add(label_1);
 		
 		JLabel label_2 = new JLabel("会社名");
-		label_2.setBounds(32, 141, 109, 16);
+		label_2.setBounds(32, 128, 109, 16);
 		add(label_2);
 		
 		JLabel label_3 = new JLabel("役職");
-		label_3.setBounds(32, 169, 109, 16);
+		label_3.setBounds(32, 156, 109, 16);
 		add(label_3);
 		
 		JLabel label_4 = new JLabel("メールアドレス");
-		label_4.setBounds(32, 197, 109, 16);
+		label_4.setBounds(32, 184, 109, 16);
 		add(label_4);
 		
 		JLabel label_5 = new JLabel("電話番号");
-		label_5.setBounds(32, 225, 109, 16);
+		label_5.setBounds(32, 212, 109, 16);
 		add(label_5);
 		
 		JLabel label_6 = new JLabel("誕生日");
-		label_6.setBounds(32, 253, 109, 16);
+		label_6.setBounds(32, 240, 109, 16);
 		add(label_6);
 		
 		JLabel label_7 = new JLabel("来店回数");
-		label_7.setBounds(32, 281, 109, 16);
+		label_7.setBounds(32, 268, 109, 16);
 		add(label_7);
 		
 		JLabel label_8 = new JLabel("ボトルキープ");
-		label_8.setBounds(32, 309, 109, 16);
+		label_8.setBounds(32, 296, 109, 16);
 		add(label_8);
 		
 		JLabel label_9 = new JLabel("グラスキープ");
-		label_9.setBounds(32, 337, 109, 16);
+		label_9.setBounds(32, 324, 109, 16);
 		add(label_9);
 		
 		JLabel label_10 = new JLabel("会費情報 *");
-		label_10.setBounds(32, 365, 109, 16);
+		label_10.setBounds(32, 352, 109, 16);
 		add(label_10);
 		
 		JLabel label_11 = new JLabel("備考");
-		label_11.setBounds(32, 393, 109, 16);
+		label_11.setBounds(32, 380, 109, 16);
 		add(label_11);
 		
 		//表示及び編集エリアの生成
 		textField = new JTextField();
-		textField.setBounds(141, 19, 300, 26);
+		textField.setBounds(141, 6, 300, 26);
 		add(textField);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(141, 80, 300, 26);
+		textField_1.setBounds(141, 67, 300, 26);
 		add(textField_1);
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
-		textField_2.setBounds(141, 108, 300, 26);
+		textField_2.setBounds(141, 95, 300, 26);
 		add(textField_2);
 		
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
-		textField_3.setBounds(141, 136, 300, 26);
+		textField_3.setBounds(141, 123, 300, 26);
 		add(textField_3);
 		
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
-		textField_4.setBounds(141, 164, 300, 26);
+		textField_4.setBounds(141, 151, 300, 26);
 		add(textField_4);
 		
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
-		textField_5.setBounds(141, 192, 300, 26);
+		textField_5.setBounds(141, 179, 300, 26);
 		add(textField_5);
 		
 		textField_6 = new JTextField();
 		textField_6.setColumns(10);
-		textField_6.setBounds(141, 220, 300, 26);
+		textField_6.setBounds(141, 207, 300, 26);
 		add(textField_6);
 		
 		textField_7 = new JTextField();
 		textField_7.setColumns(10);
-		textField_7.setBounds(141, 248, 300, 26);
+		textField_7.setBounds(141, 235, 300, 26);
 		add(textField_7);
 		
 		textField_8 = new JTextField();
 		textField_8.setColumns(10);
-		textField_8.setBounds(141, 276, 300, 26);
+		textField_8.setBounds(141, 263, 300, 26);
 		add(textField_8);
 		
 		textField_9 = new JTextField();
 		textField_9.setColumns(10);
-		textField_9.setBounds(141, 304, 300, 26);
+		textField_9.setBounds(141, 291, 300, 26);
 		add(textField_9);
 		
 		textField_10 = new JTextField();
 		textField_10.setColumns(10);
-		textField_10.setBounds(141, 332, 300, 26);
+		textField_10.setBounds(141, 319, 300, 26);
 		add(textField_10);
 		
 		textField_11 = new JTextField();
 		textField_11.setColumns(10);
-		textField_11.setBounds(141, 360, 300, 26);
+		textField_11.setBounds(141, 347, 300, 26);
 		add(textField_11);
 		
 		comboBox.addItem("個人");
 		comboBox.addItem("法人");
 		comboBox.addItem("VIP");
-		comboBox.setBounds(456, 361, 80, 27);
+		comboBox.setBounds(456, 348, 80, 27);
 		this.add(comboBox);
 		
 		comboBox_1.addItem("月会費");
 		comboBox_1.addItem("年会費");
 		comboBox_1.addItem("VIP");
-		comboBox_1.setBounds(533, 361, 95, 27);
+		comboBox_1.setBounds(533, 348, 95, 27);
 		add(comboBox_1);
 		
 		comboBox_2.addItem("現金");
 		comboBox_2.addItem("カード");
 		comboBox_2.addItem("VIP");
-		comboBox_2.setBounds(626, 361, 80, 27);
+		comboBox_2.setBounds(626, 348, 80, 27);
 		add(comboBox_2);
 		
 		//情報切り替えボタンの処理
@@ -209,7 +210,7 @@ public class PersonalPanel extends JPanel {
 				SetcomboBox();
 			}
 		});
-		button.setBounds(453, 19, 117, 29);
+		button.setBounds(453, 6, 117, 29);
 		add(button);
 		
 		JButton button_1 = new JButton("次へ");
@@ -222,7 +223,7 @@ public class PersonalPanel extends JPanel {
 				SetcomboBox();
 			}
 		});
-		button_1.setBounds(589, 19, 117, 29);
+		button_1.setBounds(589, 6, 117, 29);
 		add(button_1);
 		
 		
@@ -314,6 +315,8 @@ public class PersonalPanel extends JPanel {
 				String aaa = textArea.getText();
 				mf.MemberInfo[mf.Global][14] = aaa.replaceAll("\n", "\t");
 				
+				mf.MemberInfo[mf.Global][15] = textField_13.getText();
+
 				SetInfo();
 				
 				SetcomboBox();
@@ -365,7 +368,7 @@ public class PersonalPanel extends JPanel {
 			
 
 		});
-		button_2.setBounds(453, 108, 117, 29);
+		button_2.setBounds(453, 95, 117, 29);
 		add(button_2);
 		
 		
@@ -378,7 +381,7 @@ public class PersonalPanel extends JPanel {
 				cp();
 			}
 		});
-		button_3.setBounds(453, 164, 117, 29);
+		button_3.setBounds(453, 151, 117, 29);
 		add(button_3);
 		
 		//その人の情報を削除する
@@ -400,21 +403,30 @@ public class PersonalPanel extends JPanel {
 				    }
 			}
 		});
-		button_4.setBounds(453, 220, 117, 29);
+		button_4.setBounds(453, 207, 117, 29);
 		add(button_4);
 		
 		JLabel label_12 = new JLabel("(255文字まで)");
-		label_12.setBounds(32, 410, 97, 16);
+		label_12.setBounds(32, 397, 97, 16);
 		add(label_12);
 		
 		JLabel label_13 = new JLabel("種別 *");
-		label_13.setBounds(32, 57, 109, 16);
+		label_13.setBounds(32, 44, 109, 16);
 		add(label_13);
 		
 		textField_12 = new JTextField();
 		textField_12.setColumns(10);
-		textField_12.setBounds(141, 52, 300, 26);
+		textField_12.setBounds(141, 39, 300, 26);
 		add(textField_12);
+		
+		JLabel label_14 = new JLabel("在室状況");
+		label_14.setBounds(32, 445, 109, 16);
+		add(label_14);
+		
+		textField_13 = new JTextField();
+		textField_13.setColumns(10);
+		textField_13.setBounds(141, 440, 300, 26);
+		add(textField_13);
 		
 
 		
@@ -569,7 +581,9 @@ public class PersonalPanel extends JPanel {
 		textField_11.setText(mf.MemberInfo[mf.Global][13]);
 		
 		textArea.setText(mf.MemberInfo[mf.Global][14].replaceAll("\t", "\n"));
-		
+
+		textField_13.setText(mf.MemberInfo[mf.Global][15]);
+
 	}
 	
 	//パネルを変更する

@@ -34,7 +34,7 @@ public class SearchPanel extends JPanel {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setViewportBorder(null);
-		scrollPane.setBounds(0, 40, 712, 440);
+		scrollPane.setBounds(0, 40, 750, 520);
 		this.add(scrollPane);
 		
 		table2 = new JTable(tableModel2);
