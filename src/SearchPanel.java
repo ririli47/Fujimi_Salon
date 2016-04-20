@@ -34,7 +34,7 @@ public class SearchPanel extends JPanel {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setViewportBorder(null);
-		scrollPane.setBounds(0, 40, 712, 400);
+		scrollPane.setBounds(0, 40, 712, 440);
 		this.add(scrollPane);
 		
 		table2 = new JTable(tableModel2);
@@ -56,7 +56,7 @@ public class SearchPanel extends JPanel {
 		String Rent[][] = new String[mf.MemberInfo.length][2];
 		
 		for(int i = 0 ; i < mf.MemberInfo.length ; i++){
-			Rent[i][0] = mf.MemberInfo[i][2];
+			Rent[i][0] = mf.MemberInfo[i][3];
 			Rent[i][1] = mf.MemberInfo[i][mf.culum_no];
 		}
 			

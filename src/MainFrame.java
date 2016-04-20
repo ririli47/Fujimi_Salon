@@ -15,9 +15,9 @@ public class MainFrame extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	//ファイルから読み込んだ会員情報
-	//マジックナンバーとして会員を100人、データを14個として想定
+	//マジックナンバーとして会員を100人、データを15個として想定
 	int MemberNum = 100;
-	int InfoNum = 14;
+	int InfoNum = 15;
 	String MemberInfo[][] = new String[MemberNum][InfoNum];
 	String PersonalMemberInfo[] = new String[InfoNum];
 	int Global;
@@ -46,6 +46,7 @@ public class MainFrame extends JFrame {
 	private final JMenuItem menuItem_8 = new JMenuItem("会費情報");
 	private final JMenuItem menuItem_9 = new JMenuItem("備考");
 	private final JMenuItem menuItem_10 = new JMenuItem("来店回数");
+	private final JMenuItem menuItem_12 = new JMenuItem("種別");
 	
 	/**
 	 * Launch the application.
@@ -55,8 +56,8 @@ public class MainFrame extends JFrame {
 			public void run() {
 				try {
 					MainFrame frame = new MainFrame();
-					//黄金比
-					frame.setSize(712, 480);
+					frame.setResizable(false);
+					frame.setSize(712, 520);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -80,30 +81,31 @@ public class MainFrame extends JFrame {
 		
 		setTitle("富士見サロン会員管理システム");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 400, 400);
+		setBounds(100, 100, 400, 440);
 		
 		
 		//各パネルをMainFrameに追加
-		TopPanel.setSize(712, 440);
+		TopPanel.setSize(712, 480);
 		getContentPane().add(TopPanel);
 		TopPanel.setVisible(true);
         
-		PersonalPanel.setSize(712, 440);
+		PersonalPanel.setSize(712, 480);
 		getContentPane().add(PersonalPanel);
         PersonalPanel.setVisible(false);
 
-		RegisterPanel.setSize(712, 440);
+		RegisterPanel.setSize(712, 480);
         getContentPane().add(RegisterPanel);
         RegisterPanel.setVisible(false);
 
-		ResultPanel.setSize(712, 440);
+		ResultPanel.setSize(712, 480);
         getContentPane().add(ResultPanel);
         ResultPanel.setVisible(false);
 
-		SearchPanel.setSize(712, 440);
+		SearchPanel.setSize(712, 480);
         getContentPane().add(SearchPanel);
         SearchPanel.setVisible(false);
         
+        //各オブジェクトをMainFrameに追加
         setJMenuBar(menuBar);
         menu.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
         
@@ -113,7 +115,7 @@ public class MainFrame extends JFrame {
         	public void actionPerformed(ActionEvent e) {
         		for(int i = 0;  i < MemberNum;  i++)
         		{
-        			if(MemberInfo[i][1] == "")
+        			if(MemberInfo[i][1].equals(""))
         			{
         				TopPanel.cp(MemberInfo[i][0]);
         				break;
@@ -136,15 +138,23 @@ public class MainFrame extends JFrame {
         menu_1.add(mntmId);
         mntmNewMenuItem.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		culum_no = 3;
+        		culum_no = 4;
+        		SearchPanel.cp();
+        	}
+        });
+        menuItem_12.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		culum_no = 2;
         		SearchPanel.cp();
         	}
         });
         
+        menu_1.add(menuItem_12);
+        
         menu_1.add(mntmNewMenuItem);
         menuItem_1.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		culum_no = 4;
+        		culum_no = 5;
         		SearchPanel.cp();
         	}
         });
@@ -152,7 +162,7 @@ public class MainFrame extends JFrame {
         menu_1.add(menuItem_1);
         menuItem_2.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		culum_no = 5;
+        		culum_no = 6;
         		SearchPanel.cp();
         	}
         });
@@ -160,7 +170,7 @@ public class MainFrame extends JFrame {
         menu_1.add(menuItem_2);
         menuItem_3.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		culum_no = 6;
+        		culum_no = 7;
         		SearchPanel.cp();
         	}
         });
@@ -168,7 +178,7 @@ public class MainFrame extends JFrame {
         menu_1.add(menuItem_3);
         menuItem_4.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		culum_no = 7;
+        		culum_no = 8;
         		SearchPanel.cp();
         	}
         });
@@ -176,7 +186,7 @@ public class MainFrame extends JFrame {
         menu_1.add(menuItem_4);
         menuItem_5.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		culum_no = 8;
+        		culum_no = 9;
         		SearchPanel.cp();
         	}
         });
@@ -184,13 +194,13 @@ public class MainFrame extends JFrame {
         menu_1.add(menuItem_5);
         menuItem_6.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		culum_no = 10;
+        		culum_no = 11;
         		SearchPanel.cp();
         	}
         });
         menuItem_10.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		culum_no = 9;
+        		culum_no = 10;
         		SearchPanel.cp();
         	}
         });
@@ -200,7 +210,7 @@ public class MainFrame extends JFrame {
         menu_1.add(menuItem_6);
         menuItem_7.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		culum_no = 11;
+        		culum_no = 12;
         		SearchPanel.cp();
         	}
         });
@@ -208,7 +218,7 @@ public class MainFrame extends JFrame {
         menu_1.add(menuItem_7);
         menuItem_8.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		culum_no = 12;
+        		culum_no = 13;
         		SearchPanel.cp();
         	}
         });
@@ -216,43 +226,13 @@ public class MainFrame extends JFrame {
         menu_1.add(menuItem_8);
         menuItem_9.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		culum_no = 13;
+        		culum_no = 14;
         		SearchPanel.cp();
         	}
         });
         
         menu_1.add(menuItem_9);
 
-        /*
-        try {
-            //ファイルを読み込む
-            FileReader fr = new FileReader("/Users/Naoya/mine/helper-caravan/富士見サロン会員情報.csv");
-            BufferedReader br = new BufferedReader(fr);
-
-            //読み込んだファイルを１行ずつ処理する
-            String line;
-            StringTokenizer token = null;
-            int i = 0;
-            int j = 0;
-            while ((line = br.readLine()) != null) {
-                //区切り文字","で分割する
-                token = new StringTokenizer(line, ",");
-                while(token.hasMoreTokens())
-                {
-                	MemberInfo[i][j] = token.nextToken();
-            		//System.out.println(MemberInfo[i][j]);          	
-                	j++;
-                }
-                j = 0;
-                i++;
-            }
-            br.close();
-        }
-        catch(IOException ex) {
-            //例外発生時処理
-            ex.printStackTrace();        	
-        }
-        */
 	}
 
 	//表示するパネルを変更する

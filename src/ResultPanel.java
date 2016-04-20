@@ -1,5 +1,7 @@
 import javax.swing.JPanel;
 
+
+//用意したけど使わなかったよ
 public class ResultPanel extends JPanel {
 
 	/**

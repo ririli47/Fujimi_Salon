@@ -6,16 +6,19 @@ import javax.swing.JTextField;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.BufferedWriter;
 import java.io.PrintWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.awt.SystemColor;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
 
 public class PersonalPanel extends JPanel {
 
@@ -26,6 +29,7 @@ public class PersonalPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+	//各オブジェクトの生成
 	MainFrame mf;
 	private JTextField textField;
 	private JTextField textField_1;
@@ -39,11 +43,16 @@ public class PersonalPanel extends JPanel {
 	private JTextField textField_9;
 	private JTextField textField_10;
 	private JTextField textField_11;
-	private JTextField textField_12;
+	JScrollPane scrollPane = new JScrollPane();
+	
+	
+	JTextArea textArea = new JTextArea();
 	
 	JComboBox<String> comboBox = new JComboBox<String>();
 	JComboBox<String> comboBox_1 = new JComboBox<String>();
 	JComboBox<String> comboBox_2 = new JComboBox<String>();
+
+	private JTextField textField_12;
 	
 	public PersonalPanel(MainFrame m, String s) {
 		setBackground(SystemColor.window);
@@ -51,59 +60,66 @@ public class PersonalPanel extends JPanel {
 		this.setName("PersonalPanel");
 		setLayout(null);
 		
-		JLabel lblId = new JLabel("ID");
+		scrollPane.setBounds(141, 391, 300, 60);
+		add(scrollPane);
+		
+		scrollPane.setViewportView(textArea);
+		
+		//表示ラベルの生成
+		JLabel lblId = new JLabel("ID *");
 		lblId.setBackground(SystemColor.window);
 		lblId.setBounds(32, 24, 109, 16);
 		add(lblId);
 		
-		JLabel label = new JLabel("名前");
-		label.setBounds(32, 52, 109, 16);
+		JLabel label = new JLabel("名前 *");
+		label.setBounds(32, 85, 109, 16);
 		add(label);
 		
 		JLabel label_1 = new JLabel("住所");
-		label_1.setBounds(32, 80, 109, 16);
+		label_1.setBounds(32, 113, 109, 16);
 		add(label_1);
 		
 		JLabel label_2 = new JLabel("会社名");
-		label_2.setBounds(32, 108, 109, 16);
+		label_2.setBounds(32, 141, 109, 16);
 		add(label_2);
 		
 		JLabel label_3 = new JLabel("役職");
-		label_3.setBounds(32, 136, 109, 16);
+		label_3.setBounds(32, 169, 109, 16);
 		add(label_3);
 		
 		JLabel label_4 = new JLabel("メールアドレス");
-		label_4.setBounds(32, 164, 109, 16);
+		label_4.setBounds(32, 197, 109, 16);
 		add(label_4);
 		
 		JLabel label_5 = new JLabel("電話番号");
-		label_5.setBounds(32, 192, 109, 16);
+		label_5.setBounds(32, 225, 109, 16);
 		add(label_5);
 		
 		JLabel label_6 = new JLabel("誕生日");
-		label_6.setBounds(32, 220, 109, 16);
+		label_6.setBounds(32, 253, 109, 16);
 		add(label_6);
 		
 		JLabel label_7 = new JLabel("来店回数");
-		label_7.setBounds(32, 248, 109, 16);
+		label_7.setBounds(32, 281, 109, 16);
 		add(label_7);
 		
 		JLabel label_8 = new JLabel("ボトルキープ");
-		label_8.setBounds(32, 276, 109, 16);
+		label_8.setBounds(32, 309, 109, 16);
 		add(label_8);
 		
 		JLabel label_9 = new JLabel("グラスキープ");
-		label_9.setBounds(32, 304, 109, 16);
+		label_9.setBounds(32, 337, 109, 16);
 		add(label_9);
 		
-		JLabel label_10 = new JLabel("会費情報");
-		label_10.setBounds(32, 332, 109, 16);
+		JLabel label_10 = new JLabel("会費情報 *");
+		label_10.setBounds(32, 365, 109, 16);
 		add(label_10);
 		
 		JLabel label_11 = new JLabel("備考");
-		label_11.setBounds(32, 360, 109, 16);
+		label_11.setBounds(32, 393, 109, 16);
 		add(label_11);
 		
+		//表示及び編集エリアの生成
 		textField = new JTextField();
 		textField.setBounds(141, 19, 300, 26);
 		add(textField);
@@ -111,82 +127,78 @@ public class PersonalPanel extends JPanel {
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(141, 47, 300, 26);
+		textField_1.setBounds(141, 80, 300, 26);
 		add(textField_1);
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
-		textField_2.setBounds(141, 75, 300, 26);
+		textField_2.setBounds(141, 108, 300, 26);
 		add(textField_2);
 		
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
-		textField_3.setBounds(141, 103, 300, 26);
+		textField_3.setBounds(141, 136, 300, 26);
 		add(textField_3);
 		
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
-		textField_4.setBounds(141, 131, 300, 26);
+		textField_4.setBounds(141, 164, 300, 26);
 		add(textField_4);
 		
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
-		textField_5.setBounds(141, 159, 300, 26);
+		textField_5.setBounds(141, 192, 300, 26);
 		add(textField_5);
 		
 		textField_6 = new JTextField();
 		textField_6.setColumns(10);
-		textField_6.setBounds(141, 187, 300, 26);
+		textField_6.setBounds(141, 220, 300, 26);
 		add(textField_6);
 		
 		textField_7 = new JTextField();
 		textField_7.setColumns(10);
-		textField_7.setBounds(141, 215, 300, 26);
+		textField_7.setBounds(141, 248, 300, 26);
 		add(textField_7);
 		
 		textField_8 = new JTextField();
 		textField_8.setColumns(10);
-		textField_8.setBounds(141, 243, 300, 26);
+		textField_8.setBounds(141, 276, 300, 26);
 		add(textField_8);
 		
 		textField_9 = new JTextField();
 		textField_9.setColumns(10);
-		textField_9.setBounds(141, 271, 300, 26);
+		textField_9.setBounds(141, 304, 300, 26);
 		add(textField_9);
 		
 		textField_10 = new JTextField();
 		textField_10.setColumns(10);
-		textField_10.setBounds(141, 299, 300, 26);
+		textField_10.setBounds(141, 332, 300, 26);
 		add(textField_10);
 		
 		textField_11 = new JTextField();
 		textField_11.setColumns(10);
-		textField_11.setBounds(141, 327, 300, 26);
+		textField_11.setBounds(141, 360, 300, 26);
 		add(textField_11);
 		
-		textField_12 = new JTextField();
-		textField_12.setColumns(10);
-		textField_12.setBounds(141, 355, 300, 26);
-		add(textField_12);
-		
-		//JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.addItem("個人");
 		comboBox.addItem("法人");
-		comboBox.setBounds(456, 328, 80, 27);
+		comboBox.addItem("VIP");
+		comboBox.setBounds(456, 361, 80, 27);
 		this.add(comboBox);
 		
-		//JComboBox<String> comboBox_1 = new JComboBox<String>();
 		comboBox_1.addItem("月会費");
 		comboBox_1.addItem("年会費");
-		comboBox_1.setBounds(533, 328, 95, 27);
+		comboBox_1.addItem("VIP");
+		comboBox_1.setBounds(533, 361, 95, 27);
 		add(comboBox_1);
 		
-		//JComboBox<String> comboBox_2 = new JComboBox<String>();
 		comboBox_2.addItem("現金");
 		comboBox_2.addItem("カード");
-		comboBox_2.setBounds(626, 328, 80, 27);
+		comboBox_2.addItem("VIP");
+		comboBox_2.setBounds(626, 361, 80, 27);
 		add(comboBox_2);
 		
+		//情報切り替えボタンの処理
 		JButton button = new JButton("前へ");
 		button.addActionListener(new ActionListener() {
 			@Override
@@ -215,10 +227,26 @@ public class PersonalPanel extends JPanel {
 		
 		
 		
-		
+		//保存の処理
 		JButton button_2 = new JButton("編集内容を保存");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				if(textArea.getText().length() > 255)
+				{
+					JFrame care = new JFrame();
+
+					JOptionPane.showMessageDialog(care, "備考の文字数が多すぎます。");
+					return;
+				}
+
+				if(textField.getText().equals("") || textField_1.getText().equals("") || textField_12.getText().equals(""))
+				{
+					JFrame care = new JFrame();
+
+					JOptionPane.showMessageDialog(care, "必須事項（＊印）は必ず埋めてください。");
+					return;
+				}
 				
 				JFrame frame = new JFrame();
 
@@ -230,7 +258,7 @@ public class PersonalPanel extends JPanel {
 				      return;
 				    }else if (option == JOptionPane.CANCEL_OPTION){
 				      return;
-				    }
+				}
 				
 				for(int i = 0;  i < mf.MemberNum;  i++)
 				{
@@ -250,34 +278,41 @@ public class PersonalPanel extends JPanel {
 				
 				//現在のtextFieldの値を反映
 				mf.MemberInfo[mf.Global][1] = textField.getText();
-				mf.MemberInfo[mf.Global][2] = textField_1.getText();
-				mf.MemberInfo[mf.Global][3] = textField_2.getText();
-				mf.MemberInfo[mf.Global][4] = textField_3.getText();
-				mf.MemberInfo[mf.Global][5] = textField_4.getText();
-				mf.MemberInfo[mf.Global][6] = textField_5.getText();
-				mf.MemberInfo[mf.Global][7] = textField_6.getText();
-				mf.MemberInfo[mf.Global][8] = textField_7.getText();
-				mf.MemberInfo[mf.Global][9] = textField_8.getText();
-				mf.MemberInfo[mf.Global][10] = textField_9.getText();
-				mf.MemberInfo[mf.Global][11] = textField_10.getText();
+				mf.MemberInfo[mf.Global][2] = textField_12.getText();
+				mf.MemberInfo[mf.Global][3] = textField_1.getText();
+				mf.MemberInfo[mf.Global][4] = textField_2.getText();
+				mf.MemberInfo[mf.Global][5] = textField_3.getText();
+				mf.MemberInfo[mf.Global][6] = textField_4.getText();
+				mf.MemberInfo[mf.Global][7] = textField_5.getText();
+				mf.MemberInfo[mf.Global][8] = textField_6.getText();
+				mf.MemberInfo[mf.Global][9] = textField_7.getText();
+				mf.MemberInfo[mf.Global][10] = textField_8.getText();
+				mf.MemberInfo[mf.Global][11] = textField_9.getText();
+				mf.MemberInfo[mf.Global][12] = textField_10.getText();
 				
 				if(comboBox.getSelectedIndex() == 0)
-					mf.MemberInfo[mf.Global][12] = "個人";
+					mf.MemberInfo[mf.Global][13] = "個人";
 				else if(comboBox.getSelectedIndex() == 1)
-					mf.MemberInfo[mf.Global][12] = "法人";
+					mf.MemberInfo[mf.Global][13] = "法人";
+				else if(comboBox.getSelectedIndex() == 2)
+					mf.MemberInfo[mf.Global][13] = "VIP";
 				
 				if(comboBox_1.getSelectedIndex() == 0)
-					mf.MemberInfo[mf.Global][12] = mf.MemberInfo[mf.Global][12] + "　月会費";
+					mf.MemberInfo[mf.Global][13] = mf.MemberInfo[mf.Global][13] + "　月会費";
 				else if(comboBox_1.getSelectedIndex() == 1)
-					mf.MemberInfo[mf.Global][12] = mf.MemberInfo[mf.Global][12] + "　年会費";
+					mf.MemberInfo[mf.Global][13] = mf.MemberInfo[mf.Global][13] + "　年会費";
+				else if(comboBox_1.getSelectedIndex() == 2)
+					mf.MemberInfo[mf.Global][13] = mf.MemberInfo[mf.Global][13] + "　VIP";
 				
 				if(comboBox_2.getSelectedIndex() == 0)
-					mf.MemberInfo[mf.Global][12] = mf.MemberInfo[mf.Global][12] + "　現金";
+					mf.MemberInfo[mf.Global][13] = mf.MemberInfo[mf.Global][13] + "　現金";
 				else if(comboBox_2.getSelectedIndex() == 1)
-					mf.MemberInfo[mf.Global][12] = mf.MemberInfo[mf.Global][12] + "　カード";
-				
-				//mf.MemberInfo[mf.Global][12] = textField_11.getText();
-				mf.MemberInfo[mf.Global][13] = textField_12.getText();
+					mf.MemberInfo[mf.Global][13] = mf.MemberInfo[mf.Global][13] + "　カード";
+				else if(comboBox_2.getSelectedIndex() == 2)
+					mf.MemberInfo[mf.Global][13] = mf.MemberInfo[mf.Global][13] + "　VIP";
+			
+				String aaa = textArea.getText();
+				mf.MemberInfo[mf.Global][14] = aaa.replaceAll("\n", "\t");
 				
 				SetInfo();
 				
@@ -295,7 +330,7 @@ public class PersonalPanel extends JPanel {
 					Write = Write + mf.MemberInfo[mf.Global][i];
 					
 		            //ファイルを読み込む
-		            FileReader fr = new FileReader("/Users/Naoya/mine/helper-caravan/富士見サロン会員情報.csv");
+		            FileReader fr = new FileReader("富士見サロン会員情報.csv");
 		            BufferedReader br = new BufferedReader(fr);
 
 		            //読み込んだファイルを１行ずつ処理する
@@ -315,9 +350,9 @@ public class PersonalPanel extends JPanel {
 		        }
 				//ファイル書き込み
 				try{
-				      File file = new File("/Users/Naoya/mine/helper-caravan/富士見サロン会員情報.csv");
+				      File file = new File("富士見サロン会員情報.csv");
 
-				      PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file)));
+				      PrintWriter pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file),"UTF-8")));
 
 				      for(i = 0;  i < mf.MemberNum;  i++)
 				      	pw.println(line[i]);
@@ -330,9 +365,11 @@ public class PersonalPanel extends JPanel {
 			
 
 		});
-		button_2.setBounds(453, 75, 117, 29);
+		button_2.setBounds(453, 108, 117, 29);
 		add(button_2);
 		
+		
+		//パネルをトップに戻す
 		JButton button_3 = new JButton("一覧に戻る");
 		button_3.addActionListener(new ActionListener() {
 			@Override
@@ -341,9 +378,10 @@ public class PersonalPanel extends JPanel {
 				cp();
 			}
 		});
-		button_3.setBounds(453, 131, 117, 29);
+		button_3.setBounds(453, 164, 117, 29);
 		add(button_3);
 		
+		//その人の情報を削除する
 		JButton button_4 = new JButton("削除");
 		button_4.addActionListener(new ActionListener() {
 			@Override
@@ -362,14 +400,29 @@ public class PersonalPanel extends JPanel {
 				    }
 			}
 		});
-		button_4.setBounds(453, 187, 117, 29);
+		button_4.setBounds(453, 220, 117, 29);
 		add(button_4);
+		
+		JLabel label_12 = new JLabel("(255文字まで)");
+		label_12.setBounds(32, 410, 97, 16);
+		add(label_12);
+		
+		JLabel label_13 = new JLabel("種別 *");
+		label_13.setBounds(32, 57, 109, 16);
+		add(label_13);
+		
+		textField_12 = new JTextField();
+		textField_12.setColumns(10);
+		textField_12.setBounds(141, 52, 300, 26);
+		add(textField_12);
+		
+
 		
 		
 		
 	}
 
-	
+	//会員情報を消す処理
 	void delete()
 	{
 		for(int i = 1;  i < mf.InfoNum;  i++)
@@ -417,9 +470,8 @@ public class PersonalPanel extends JPanel {
 		}
 		//ファイル書き込み
 		try{
-		      File file = new File("/Users/Naoya/mine/helper-caravan/富士見サロン会員情報.csv");
-
-		      PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file)));
+		      File file = new File("富士見サロン会員情報.csv");
+		      PrintWriter pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file),"UTF-8")));
 
 		      for(i = 0;  i < mf.MemberNum;  i++)
 		      	pw.println(Write[i]);
@@ -430,80 +482,97 @@ public class PersonalPanel extends JPanel {
 		    }
 	  }
 	
+	//comboBoxのセット
 	void SetcomboBox()
 	{
 
-		if(mf.MemberInfo[mf.Global][12].equals("個人　月会費　現金"))
+		if(mf.MemberInfo[mf.Global][13].equals("個人　月会費　現金"))
 		{
 			comboBox.setSelectedIndex(0);
 			comboBox_1.setSelectedIndex(0);
 			comboBox_2.setSelectedIndex(0);
 		}
-		else if(mf.MemberInfo[mf.Global][12].equals("法人　月会費　現金"))
+		else if(mf.MemberInfo[mf.Global][13].equals("法人　月会費　現金"))
 		{
 			comboBox.setSelectedIndex(1);
 			comboBox_1.setSelectedIndex(0);
 			comboBox_2.setSelectedIndex(0);					
 		}
-		else if(mf.MemberInfo[mf.Global][12].equals("個人　年会費　現金"))
+		else if(mf.MemberInfo[mf.Global][13].equals("個人　年会費　現金"))
 		{
 			comboBox.setSelectedIndex(0);
 			comboBox_1.setSelectedIndex(1);
 			comboBox_2.setSelectedIndex(0);
 		}
-		else if(mf.MemberInfo[mf.Global][12].equals("法人　年会費　現金"))
+		else if(mf.MemberInfo[mf.Global][13].equals("法人　年会費　現金"))
 		{
 			comboBox.setSelectedIndex(1);
 			comboBox_1.setSelectedIndex(1);
 			comboBox_2.setSelectedIndex(0);
 		}
-		else if(mf.MemberInfo[mf.Global][12].equals("個人　月会費　カード"))
+		else if(mf.MemberInfo[mf.Global][13].equals("個人　月会費　カード"))
 		{
 			comboBox.setSelectedIndex(0);
 			comboBox_1.setSelectedIndex(0);
 			comboBox_2.setSelectedIndex(1);
 		}
-		else if(mf.MemberInfo[mf.Global][12].equals("法人　月会費　カード"))
+		else if(mf.MemberInfo[mf.Global][13].equals("法人　月会費　カード"))
 		{
 			comboBox.setSelectedIndex(1);
 			comboBox_1.setSelectedIndex(0);
 			comboBox_2.setSelectedIndex(1);
 		}
-		else if(mf.MemberInfo[mf.Global][12].equals("個人　年会費　カード"))
+		else if(mf.MemberInfo[mf.Global][13].equals("個人　年会費　カード"))
 		{
 			comboBox.setSelectedIndex(0);
 			comboBox_1.setSelectedIndex(1);
 			comboBox_2.setSelectedIndex(1);
 		}
-		else if(mf.MemberInfo[mf.Global][12].equals("法人　年会費　カード"))
+		else if(mf.MemberInfo[mf.Global][13].equals("法人　年会費　カード"))
 		{
 			comboBox.setSelectedIndex(1);
 			comboBox_1.setSelectedIndex(1);
 			comboBox_2.setSelectedIndex(1);
+		}
+		else if(mf.MemberInfo[mf.Global][13].equals("VIP　VIP　VIP"))
+		{
+			comboBox.setSelectedIndex(2);
+			comboBox_1.setSelectedIndex(2);
+			comboBox_2.setSelectedIndex(2);
+		}
+		else
+		{
+			comboBox.setSelectedIndex(2);
+			comboBox_1.setSelectedIndex(2);
+			comboBox_2.setSelectedIndex(2);			
 		}
 		
 		
 	}
 	
+	//情報を表示
 	void SetInfo()
 	{
 		//System.out.println(mf.MemberInfo[mf.Global][9]);
 		textField.setText(mf.MemberInfo[mf.Global][1]);
-		textField_1.setText(mf.MemberInfo[mf.Global][2]);
-		textField_2.setText(mf.MemberInfo[mf.Global][3]);
-		textField_3.setText(mf.MemberInfo[mf.Global][4]);
-		textField_4.setText(mf.MemberInfo[mf.Global][5]);
-		textField_5.setText(mf.MemberInfo[mf.Global][6]);
-		textField_6.setText(mf.MemberInfo[mf.Global][7]);
-		textField_7.setText(mf.MemberInfo[mf.Global][8]);
-		textField_8.setText(mf.MemberInfo[mf.Global][9]);
-		textField_9.setText(mf.MemberInfo[mf.Global][10]);
-		textField_10.setText(mf.MemberInfo[mf.Global][11]);
-		textField_11.setText(mf.MemberInfo[mf.Global][12]);
-		textField_12.setText(mf.MemberInfo[mf.Global][13]);
+		textField_12.setText(mf.MemberInfo[mf.Global][2]);
+		textField_1.setText(mf.MemberInfo[mf.Global][3]);
+		textField_2.setText(mf.MemberInfo[mf.Global][4]);
+		textField_3.setText(mf.MemberInfo[mf.Global][5]);
+		textField_4.setText(mf.MemberInfo[mf.Global][6]);
+		textField_5.setText(mf.MemberInfo[mf.Global][7]);
+		textField_6.setText(mf.MemberInfo[mf.Global][8]);
+		textField_7.setText(mf.MemberInfo[mf.Global][9]);
+		textField_8.setText(mf.MemberInfo[mf.Global][10]);
+		textField_9.setText(mf.MemberInfo[mf.Global][11]);
+		textField_10.setText(mf.MemberInfo[mf.Global][12]);
+		textField_11.setText(mf.MemberInfo[mf.Global][13]);
+		
+		textArea.setText(mf.MemberInfo[mf.Global][14].replaceAll("\t", "\n"));
 		
 	}
 	
+	//パネルを変更する
 	void cp()
 	{
 		mf.ChangePanel(mf.PanelNames[1], mf.PanelNames[0]);
