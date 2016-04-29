@@ -115,7 +115,9 @@ public class MainFrame extends JFrame {
         menuItem.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
         menuItem.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		for(int i = 0;  i < MemberNum;  i++)
+
+		        		
+				for(int i = 0;  i < MemberNum;  i++)
         		{
         			if(MemberInfo[i][1].equals(""))
         			{
@@ -123,7 +125,11 @@ public class MainFrame extends JFrame {
         				break;
         			}
         		}
-        	}
+				PersonalPanel.textField_8.setText("0");
+				PersonalPanel.textField_9.setText("無");
+				PersonalPanel.textField_10.setText("無");
+				PersonalPanel.textField_13.setText("不在");
+			}
         });
         
         menu.add(menuItem);

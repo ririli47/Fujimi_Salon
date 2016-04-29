@@ -39,9 +39,9 @@ public class PersonalPanel extends JPanel {
 	private JTextField textField_5;
 	private JTextField textField_6;
 	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
-	private JTextField textField_10;
+	public JTextField textField_8;
+	public JTextField textField_9;
+	public JTextField textField_10;
 	private JTextField textField_11;
 	JScrollPane scrollPane = new JScrollPane();
 	
@@ -53,7 +53,7 @@ public class PersonalPanel extends JPanel {
 	JComboBox<String> comboBox_2 = new JComboBox<String>();
 
 	private JTextField textField_12;
-	private JTextField textField_13;
+	public JTextField textField_13;
 	
 	public PersonalPanel(MainFrame m, String s) {
 		setBackground(SystemColor.window);
